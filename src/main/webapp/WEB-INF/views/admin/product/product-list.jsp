@@ -175,8 +175,6 @@
 </div>
 <!-- End Shop Page -->
 
-<!-- Start Instagram Feed  -->
-<%@include file="/common/web/instaggram-box.jsp" %>
 <!-- End Instagram Feed  -->
 
 <%@include file="/common/web/footer.jsp" %>

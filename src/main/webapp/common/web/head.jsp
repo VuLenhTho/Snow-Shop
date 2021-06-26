@@ -12,7 +12,7 @@
 <meta name="author" content="">
 
 <!-- Site Icons -->
-<link rel="icon" type="image/png" sizes="16x16" href="<c:url value="/template/icons/webLogo.png"/>">
+<link rel="icon" type="image/png" sizes="16x16" href="<c:url value="/template/icons/logos.jpg"/>">
 
 <!-- Bootstrap CSS -->
 <link rel="stylesheet" href="<c:url value="/shoptemplate/css/bootstrap.min.css"/>">

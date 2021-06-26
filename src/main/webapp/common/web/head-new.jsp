@@ -9,7 +9,7 @@
 <meta name="generator" content="Themefisher Constra HTML Template v1.0">
 
 <!-- Favicon -->
-<link rel="shortcut icon" type="image/x-icon" href="/aviato/images/favicon.png"/>
+<link rel="shortcut icon" type="image/x-icon" href="/template/icons/logos.jpg"/>
 
 <!-- Themefisher Icon font -->
 <link rel="stylesheet" href="/aviato/plugins/themefisher-font/style.css">

@@ -80,7 +80,7 @@ public class ProductServiceImpl implements ProductService {
     public ModelAndView getListProductPage(FilterProductRequest filter, boolean forAdmin) {
         ModelAndView modelAndView = new ModelAndView("/web/product/product-list-new");
         if (forAdmin) {
-            modelAndView.setViewName("/admin/product/product-list");
+            modelAndView.setViewName("/admin/product/product-list-new");
         }
         String url = APIConstant.WEB_URI + "/products/window-view?page=" + (Integer.parseInt(filter.getPage()) - 1) + "&size=" + filter.getSize();
         if (StringUtils.isEmpty(filter.getSearch())) {
