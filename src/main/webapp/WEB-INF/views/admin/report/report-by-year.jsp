@@ -100,82 +100,82 @@
                 </div>
             </div>
         </div>
-        <div class="row">
-            <div class="col-lg-6">
-                <h4 class="card-title" style="margin-left: 19px">Danh sách sản phẩm bán chạy nhất</h4>
-                <div class="table-main table-responsive">
-                    <table class="table">
-                        <thead class="thead-info">
-                        <tr>
-                            <th>Id</th>
-                            <th>Hình ảnh</th>
-                            <th>Tên sản phẩm</th>
-                            <th>Đã bán</th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        <c:forEach items="${reportData.bestsellerProduct}" var="item">
-                            <tr>
-                                <td class="price-pr">
-                                    <p>${item.id}</p>
-                                </td>
-                                <td class="thumbnail-img">
-                                    <a href="/product/${item.id}">
-                                        <img class="img-fluid" src="${item.thumbnail}" alt="thumbnail"/>
-                                    </a>
-                                </td>
-                                <td class="name-pr">
-                                    <p href="/product/${item.id}" size="20">
-                                            ${item.name}
-                                    </p>
-                                </td>
-                                <td class="price-pr">
-                                    <p>${item.quantity}</p>
-                                </td>
-                            </tr>
-                        </c:forEach>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-            <div class="col-lg-6">
-                <h4 class="card-title" style="margin-left: 19px">Danh sách sản phẩm bán chậm nhất</h4>
-                <div class="table-main table-responsive">
-                    <table class="table">
-                        <thead class="thead-info">
-                        <tr>
-                            <th>Id</th>
-                            <th>Hình ảnh</th>
-                            <th>Tên sản phẩm</th>
-                            <th>Đã bán</th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        <c:forEach items="${reportData.badSellerProduct}" var="item">
-                            <tr>
-                                <td class="price-pr">
-                                    <p>${item.id}</p>
-                                </td>
-                                <td class="thumbnail-img">
-                                    <a href="/product/${item.id}">
-                                        <img class="img-fluid" src="${item.thumbnail}" alt="thumbnail"/>
-                                    </a>
-                                </td>
-                                <td class="name-pr">
-                                    <p href="/product/${item.id}" size="20">
-                                            ${item.name}
-                                    </p>
-                                </td>
-                                <td class="price-pr">
-                                    <p>${item.quantity}</p>
-                                </td>
-                            </tr>
-                        </c:forEach>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-        </div>
+<%--        <div class="row">--%>
+<%--            <div class="col-lg-6">--%>
+<%--                <h4 class="card-title" style="margin-left: 19px">Danh sách sản phẩm bán chạy nhất</h4>--%>
+<%--                <div class="table-main table-responsive">--%>
+<%--                    <table class="table">--%>
+<%--                        <thead class="thead-info">--%>
+<%--                        <tr>--%>
+<%--                            <th>Id</th>--%>
+<%--                            <th>Hình ảnh</th>--%>
+<%--                            <th>Tên sản phẩm</th>--%>
+<%--                            <th>Đã bán</th>--%>
+<%--                        </tr>--%>
+<%--                        </thead>--%>
+<%--                        <tbody>--%>
+<%--                        <c:forEach items="${reportData.bestsellerProduct}" var="item">--%>
+<%--                            <tr>--%>
+<%--                                <td class="price-pr">--%>
+<%--                                    <p>${item.id}</p>--%>
+<%--                                </td>--%>
+<%--                                <td class="thumbnail-img">--%>
+<%--                                    <a href="/product/${item.id}">--%>
+<%--                                        <img class="img-fluid" src="${item.thumbnail}" alt="thumbnail"/>--%>
+<%--                                    </a>--%>
+<%--                                </td>--%>
+<%--                                <td class="name-pr">--%>
+<%--                                    <p href="/product/${item.id}" size="20">--%>
+<%--                                            ${item.name}--%>
+<%--                                    </p>--%>
+<%--                                </td>--%>
+<%--                                <td class="price-pr">--%>
+<%--                                    <p>${item.quantity}</p>--%>
+<%--                                </td>--%>
+<%--                            </tr>--%>
+<%--                        </c:forEach>--%>
+<%--                        </tbody>--%>
+<%--                    </table>--%>
+<%--                </div>--%>
+<%--            </div>--%>
+<%--            <div class="col-lg-6">--%>
+<%--                <h4 class="card-title" style="margin-left: 19px">Danh sách sản phẩm bán chậm nhất</h4>--%>
+<%--                <div class="table-main table-responsive">--%>
+<%--                    <table class="table">--%>
+<%--                        <thead class="thead-info">--%>
+<%--                        <tr>--%>
+<%--                            <th>Id</th>--%>
+<%--                            <th>Hình ảnh</th>--%>
+<%--                            <th>Tên sản phẩm</th>--%>
+<%--                            <th>Đã bán</th>--%>
+<%--                        </tr>--%>
+<%--                        </thead>--%>
+<%--                        <tbody>--%>
+<%--                        <c:forEach items="${reportData.badSellerProduct}" var="item">--%>
+<%--                            <tr>--%>
+<%--                                <td class="price-pr">--%>
+<%--                                    <p>${item.id}</p>--%>
+<%--                                </td>--%>
+<%--                                <td class="thumbnail-img">--%>
+<%--                                    <a href="/product/${item.id}">--%>
+<%--                                        <img class="img-fluid" src="${item.thumbnail}" alt="thumbnail"/>--%>
+<%--                                    </a>--%>
+<%--                                </td>--%>
+<%--                                <td class="name-pr">--%>
+<%--                                    <p href="/product/${item.id}" size="20">--%>
+<%--                                            ${item.name}--%>
+<%--                                    </p>--%>
+<%--                                </td>--%>
+<%--                                <td class="price-pr">--%>
+<%--                                    <p>${item.quantity}</p>--%>
+<%--                                </td>--%>
+<%--                            </tr>--%>
+<%--                        </c:forEach>--%>
+<%--                        </tbody>--%>
+<%--                    </table>--%>
+<%--                </div>--%>
+<%--            </div>--%>
+<%--        </div>--%>
         <%@include file="/common/admin/footer.jsp" %>
 
 

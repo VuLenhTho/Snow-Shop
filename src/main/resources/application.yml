@@ -15,7 +15,7 @@ spring:
         registration:
           google:
             client-id: 941267338220-nv42uhfak9jp8skr3ir76mpanub9g444.apps.googleusercontent.com
-            client-secret: LnZqOM_3vU-tnXg1emoVISrM
+            client-secret: laJ5B9Vh9wLPr6LJR1KW6cPQ
           facebook:
             client-id: 289558572596393
-            client-secret: 36ca4671280100bd34e438f175bffefd
+            client-secret: c867e15bee706696f7fc6531a46a8983
