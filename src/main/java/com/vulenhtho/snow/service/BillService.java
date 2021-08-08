@@ -17,4 +17,5 @@ public interface BillService {
 
     ModelAndView getReportByYear(Integer year);
 
+    ModelAndView getReportByRangeDate(Long startTime, Long endTime, String value);
 }

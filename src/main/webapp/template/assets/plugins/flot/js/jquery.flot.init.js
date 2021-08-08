@@ -608,7 +608,7 @@ $(function() {
             data: [
                 [1, 50]
             ],
-            color: '#e1e8f0'
+            color: '#666a6f'
         },
         {
             label: "Series 2",

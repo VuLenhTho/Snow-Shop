@@ -214,22 +214,22 @@
 
                                                 <%--status--%>
                                             <c:if test="${bill.status == 'INIT'}">
-                                                <td>Đơn mới</td>
+                                                <td style="color: red; font-weight: bold">Đơn mới</td>
                                             </c:if>
                                             <c:if test="${bill.status == 'CHECKING'}">
-                                                <td>Đang kiểm tra</td>
+                                                <td style="color: #ffda1c; font-weight: bold">Đang kiểm tra</td>
                                             </c:if>
                                             <c:if test="${bill.status == 'CONFIRMED'}">
-                                                <td>Đã xác nhận</td>
+                                                <td style="color: blue; font-weight: bold">Đã xác nhận</td>
                                             </c:if>
                                             <c:if test="${bill.status == 'SHIPPING'}">
-                                                <td>Đang vận chuyển</td>
+                                                <td style="font-weight: bold">Đang vận chuyển</td>
                                             </c:if>
                                             <c:if test="${bill.status == 'RETURNED'}">
-                                                <td>Bị trả lại</td>
+                                                <td style="color: gray; font-weight: bold">Bị trả lại</td>
                                             </c:if>
                                             <c:if test="${bill.status == 'FINISH'}">
-                                                <td>Hoàn thành</td>
+                                                <td style="color: #32ec32; font-weight: bold">Hoàn thành</td>
                                             </c:if>
                                                 <%--action--%>
                                             <td align="center">
@@ -238,8 +238,12 @@
                                                    title="" data-original-title="Chỉnh sửa đơn hàng">
                                                     <i class="fa fa-pencil color-muted m-r-5"></i>
                                                 </a>
-                                                <input type="checkbox" class="check-box" name="billId" title=""
-                                                       value="${bill.id}">
+                                                <c:if test="${bill.status != 'FINISH'}">
+
+                                                    <input type="checkbox" class="check-box" name="billId" title=""
+                                                           value="${bill.id}">
+                                                </c:if>
+
                                             </td>
                                         </tr>
                                     </c:forEach>

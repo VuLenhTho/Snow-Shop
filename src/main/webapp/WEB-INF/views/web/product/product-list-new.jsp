@@ -132,8 +132,8 @@
                                         <div class="product-content">
                                             <h4>${product.name}</h4>
                                             <c:if test="${product.isDiscount == true}">
-                                                <p class="price">
-                                                    <del>${product.originalPrice}</del>&nbsp; ${product.vnPrice}</p>
+                                                <p style="color: red" class="price">
+                                                    <del style="color: gray">${product.originalPrice}</del>&nbsp; ${product.vnPrice}</p>
                                             </c:if>
                                             <c:if test="${product.isDiscount != true}">
                                                 <p class="price">${product.vnPrice}</p>

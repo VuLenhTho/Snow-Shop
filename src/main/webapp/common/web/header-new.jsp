@@ -7,7 +7,7 @@
             <div class="col-md-4 col-xs-12 col-sm-4">
                 <div class="contact-number">
                     <i class="tf-ion-ios-telephone"></i>
-                    <span>0337 416 807</span>
+                    <span style="font-size: 16px">0337 416 807</span>
                 </div>
             </div>
             <div class="col-md-4 col-xs-12 col-sm-4">
@@ -15,14 +15,14 @@
                 <div class="logo text-center">
                     <a href="/home">
                         <!-- replace logo here -->
-                        <svg width="135px" height="29px" viewBox="0 0 155 29" version="1.1"
+                        <svg width="400px" height="60px" viewBox="0 0 155 60" version="1.1"
                              xmlns="http://www.w3.org/2000/svg"
                              xmlns:xlink="http://www.w3.org/1999/xlink">
                             <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" font-size="40"
-                               font-family="AustinBold, Austin" font-weight="bold">
+                               font-family="gentona" font-weight="bold">
                                 <g id="Group" transform="translate(-108.000000, -297.000000)" fill="#000000">
-                                    <text id="AVIATO">
-                                        <tspan x="108.94" y="325"> Snow</tspan>
+                                    <text   id="AVIATO">
+                                        <tspan x="50" y="325">Snow Shop</tspan>
                                     </text>
                                 </g>
                             </g>
@@ -37,33 +37,33 @@
                     <c:if test="${name != null && name != 'anonymousUser'}">
                         <c:if test="${isAdmin != true}">
                             <li class="cart-nav">
-                                <a href="/#">Xin chào <span><%=SecurityUtil.getUserName()%></span></a>
+                                <a style="font-size: 16px" href="/#">Xin chào <span><%=SecurityUtil.getUserName()%></span></a>
                             </li>
                             <li class="cart-nav">
-                                <a href="<c:url value="/logout"/>">Đăng xuất</a>
+                                <a style="font-size: 16px" href="<c:url value="/logout"/>">Đăng xuất</a>
                             </li>
                         </c:if>
                         <c:if test="${isAdmin == true}">
                             <li class="cart-nav">
-                                <a href="/admin/home"><i >Quản lý cửa hàng</i></a>
+                                <a style="font-size: 16px" href="/admin/home"><i >Quản lý cửa hàng</i></a>
                             </li>
                             <li class="cart-nav">
-                                <a href="<c:url value="/logout"/>">Đăng xuất</a>
+                                <a style="font-size: 16px" href="<c:url value="/logout"/>">Đăng xuất</a>
                             </li>
                         </c:if>
 
                     </c:if>
                     <c:if test="${name == null || name == 'anonymousUser'}">
-                        <li class="cart-nav"><a href="<c:url value="/login"/>">Đăng nhập</a></li>
+                        <li class="cart-nav"><a style="font-size: 16px" href="<c:url value="/login"/>">Đăng nhập</a></li>
                     </c:if>
 
                     <li class="cart-nav">
-                        <a href="/cart"><i class="tf-ion-android-cart"></i>Giỏ hàng</a>
+                        <a style="font-size: 16px" href="/cart"><i class="tf-ion-android-cart"></i>Giỏ hàng</a>
                     </li>
 
                     <!-- Search -->
                     <li class="dropdown search dropdown-slide">
-                        <a href="#!" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown"><i
+                        <a style="font-size: 16px" href="#!" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown"><i
                                 class="tf-ion-ios-search-strong"></i> Tìm kiếm</a>
                         <ul class="dropdown-menu search-dropdown">
                             <li>
@@ -103,17 +103,17 @@
 
                     <!-- Home -->
                     <li class="dropdown ">
-                        <a href="index.html">Trang chủ</a>
+                        <a style="color: #e52ce5" href="/home">Trang chủ</a>
                     </li><!-- / Home -->
 
 
                     <!-- Elements -->
-                    <li class="dropdown dropdown-slide">
-                        <a href="<c:url value="/products"/>" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown"
+                    <li  class="dropdown dropdown-slide">
+                        <a style="color: #e52ce5"  href="<c:url value="/products"/>" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown"
                            data-delay="350"
                            role="button" aria-haspopup="true" aria-expanded="false">Sản phẩm<span
                                 class="tf-ion-ios-arrow-down"></span></a>
-                        <div class="dropdown-menu">
+                        <div style="color: #e52ce5"  class="dropdown-menu">
                             <div class="row">
 
                                 <!-- Basic -->
@@ -144,12 +144,12 @@
 
 
                     <li class="dropdown ">
-                        <a href="index.html">Khuyến mại</a>
+                        <a style="color: #e52ce5" href="/home">Khuyến mại</a>
                     </li><!-- / Home -->
 
 
                     <li class="dropdown ">
-                        <a href="index.html">Giới thiệu</a>
+                        <a style="color: #e52ce5"  href="/home">Giới thiệu</a>
                     </li><!-- / Home -->
 
                 </ul><!-- / .nav .navbar-nav -->

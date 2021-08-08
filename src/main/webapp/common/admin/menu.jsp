@@ -14,10 +14,9 @@
             </li>
             <li><a class="has-arrow" href="#" aria-expanded="false"><i class="mdi mdi-chart-bar"></i> <span class="nav-text">Thống kê</span></a>
                 <ul aria-expanded="false">
-                    <li><a href="/admin/reportByMonthAndYear">Thống kê theo tháng</a>
-                    </li>
-
                     <li><a href="/admin/reportByYear">Thống kê theo năm</a>
+                    </li>
+                    <li><a href="/admin/reportByRangeDate">Thống kê theo khoảng thời gian</a>
                     </li>
                 </ul>
             </li>

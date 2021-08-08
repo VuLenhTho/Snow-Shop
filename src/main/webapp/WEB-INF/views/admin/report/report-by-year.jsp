@@ -25,6 +25,9 @@
     <link rel="stylesheet" href="<c:url value="/shoptemplate/css/responsive.css"/>">
     <!-- Custom CSS -->
     <link rel="stylesheet" href="<c:url value="/shoptemplate/css/custom.css"/>">
+    <link href="/template/css/style.css" rel="stylesheet">
+    <script src="/template/js/modernizr-3.6.0.min.js"></script>
+
 </head>
 
 <body class="v-light vertical-nav fix-header fix-sidebar">
@@ -52,7 +55,7 @@
                                         <label class="col-lg-3 col-form-label" for="year">Chọn năm
                                         </label>
                                         <div class="col-lg-9">
-                                            <input type="number" id="year" name="year" min="2020" value="2020"
+                                            <input type="number" id="year" name="year" min="2021" value="2021"
                                                    class="form-control mb-2" placeholder="Chọn năm..">
                                         </div>
                                     </div>
@@ -72,13 +75,15 @@
                                     <div class="card-body">
                                         <div class="form-validation">
                                             <div class="form-group row">
-                                                <label class="col-lg-3 col-form-label" for="moneyFromSale">Tổng tiền thu về:</label>
+                                                <label class="col-lg-3 col-form-label" for="moneyFromSale">Tổng tiền thu
+                                                    về:</label>
                                                 <div class="col-lg-9">
                                                     <p id="moneyFromSale">${reportData.vnMoneyFromSale}</p>
                                                 </div>
                                             </div>
                                             <div class="form-group row">
-                                                <label class="col-lg-3 col-form-label" for="interestMoney">Tổng tiền lãi:
+                                                <label class="col-lg-3 col-form-label" for="interestMoney">Tổng tiền
+                                                    lãi:
                                                 </label>
                                                 <div class="col-lg-9">
                                                     <p id="interestMoney">${reportData.vnInterestMoney}</p>
@@ -96,86 +101,31 @@
                                 </div>
                             </div>
                         </div>
+                        <div class="row">
+                            <div class="col-sm-12 col-md-12">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <h4 class="card-title">Biểu đồ doanh thu 7 tháng đầu năm</h4>
+                                        <canvas id="lineChart" width="500" height="250"></canvas>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-12 col-md-12">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <h4 class="card-title">Biểu đồ doanh thu 6 tháng cuối năm</h4>
+                                        <canvas id="lineChart2" width="500" height="250"></canvas>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-<%--        <div class="row">--%>
-<%--            <div class="col-lg-6">--%>
-<%--                <h4 class="card-title" style="margin-left: 19px">Danh sách sản phẩm bán chạy nhất</h4>--%>
-<%--                <div class="table-main table-responsive">--%>
-<%--                    <table class="table">--%>
-<%--                        <thead class="thead-info">--%>
-<%--                        <tr>--%>
-<%--                            <th>Id</th>--%>
-<%--                            <th>Hình ảnh</th>--%>
-<%--                            <th>Tên sản phẩm</th>--%>
-<%--                            <th>Đã bán</th>--%>
-<%--                        </tr>--%>
-<%--                        </thead>--%>
-<%--                        <tbody>--%>
-<%--                        <c:forEach items="${reportData.bestsellerProduct}" var="item">--%>
-<%--                            <tr>--%>
-<%--                                <td class="price-pr">--%>
-<%--                                    <p>${item.id}</p>--%>
-<%--                                </td>--%>
-<%--                                <td class="thumbnail-img">--%>
-<%--                                    <a href="/product/${item.id}">--%>
-<%--                                        <img class="img-fluid" src="${item.thumbnail}" alt="thumbnail"/>--%>
-<%--                                    </a>--%>
-<%--                                </td>--%>
-<%--                                <td class="name-pr">--%>
-<%--                                    <p href="/product/${item.id}" size="20">--%>
-<%--                                            ${item.name}--%>
-<%--                                    </p>--%>
-<%--                                </td>--%>
-<%--                                <td class="price-pr">--%>
-<%--                                    <p>${item.quantity}</p>--%>
-<%--                                </td>--%>
-<%--                            </tr>--%>
-<%--                        </c:forEach>--%>
-<%--                        </tbody>--%>
-<%--                    </table>--%>
-<%--                </div>--%>
-<%--            </div>--%>
-<%--            <div class="col-lg-6">--%>
-<%--                <h4 class="card-title" style="margin-left: 19px">Danh sách sản phẩm bán chậm nhất</h4>--%>
-<%--                <div class="table-main table-responsive">--%>
-<%--                    <table class="table">--%>
-<%--                        <thead class="thead-info">--%>
-<%--                        <tr>--%>
-<%--                            <th>Id</th>--%>
-<%--                            <th>Hình ảnh</th>--%>
-<%--                            <th>Tên sản phẩm</th>--%>
-<%--                            <th>Đã bán</th>--%>
-<%--                        </tr>--%>
-<%--                        </thead>--%>
-<%--                        <tbody>--%>
-<%--                        <c:forEach items="${reportData.badSellerProduct}" var="item">--%>
-<%--                            <tr>--%>
-<%--                                <td class="price-pr">--%>
-<%--                                    <p>${item.id}</p>--%>
-<%--                                </td>--%>
-<%--                                <td class="thumbnail-img">--%>
-<%--                                    <a href="/product/${item.id}">--%>
-<%--                                        <img class="img-fluid" src="${item.thumbnail}" alt="thumbnail"/>--%>
-<%--                                    </a>--%>
-<%--                                </td>--%>
-<%--                                <td class="name-pr">--%>
-<%--                                    <p href="/product/${item.id}" size="20">--%>
-<%--                                            ${item.name}--%>
-<%--                                    </p>--%>
-<%--                                </td>--%>
-<%--                                <td class="price-pr">--%>
-<%--                                    <p>${item.quantity}</p>--%>
-<%--                                </td>--%>
-<%--                            </tr>--%>
-<%--                        </c:forEach>--%>
-<%--                        </tbody>--%>
-<%--                    </table>--%>
-<%--                </div>--%>
-<%--            </div>--%>
-<%--        </div>--%>
+
         <%@include file="/common/admin/footer.jsp" %>
 
 
@@ -193,6 +143,119 @@
     <script src="<c:url value="/template/paging/jquery.twbsPagination.min.js"/>"></script>
     <script src="<c:url value="/template/assets/plugins/sweetalert/js/sweetalert.min.js"/>"></script>
 
+    <script src="/template/assets/plugins/chartjs/Chart.bundle.js"></script>
+    <script src="/template/assets/plugins/chartjs/chartjs-init.js"></script>
+    <script>
+        (function ($) {
+            "use strict";
+
+            //line chart
+            var ctx = document.getElementById("lineChart");
+            ctx.height = 150;
+            var myChart = new Chart(ctx, {
+                type: 'line',
+                data: {
+                    labels: ["Tháng 1", "Tháng 2", "Tháng 3", "Tháng 4", "Tháng 5", "Tháng 6", "Tháng 7"],
+                    datasets: [
+                        {
+                            label: "Tổng tiền thu về",
+                            borderColor: "rgba(144,	104,	190,.9)",
+                            borderWidth: "1",
+                            backgroundColor: "rgba(255,254,254,0.25)",
+                            data: ${totalSale1To7}
+                        },
+                        {
+                            label: "Tổng tiền lãi",
+                            borderColor: "rgba(110,	211,	207, 0.9)",
+                            borderWidth: "1",
+                            backgroundColor: "rgba(255,255,255,0.5)",
+                            pointHighlightStroke: "rgba(26,179,148,1)",
+                            data: ${interest1To7}
+                        }
+                        ,
+                        {
+                            label: "Tiền nhập",
+                            borderColor: "rgba(110,	211,	207, 0.9)",
+                            borderWidth: "1",
+                            backgroundColor: "rgba(255,255,255,0.5)",
+                            pointHighlightStroke: "rgba(26,179,148,1)",
+                            data: ${importMoney1To7}
+                        }
+                    ]
+                },
+                options: {
+                    responsive: true,
+                    tooltips: {
+                        mode: 'index',
+                        intersect: false
+                    },
+                    hover: {
+                        mode: 'nearest',
+                        intersect: true
+                    }
+
+                }
+            });
+
+        })(jQuery);
+
+
+    </script>
+    <script>
+        (function ($) {
+            "use strict";
+
+            //line chart
+            var ctx = document.getElementById("lineChart2");
+            ctx.height = 150;
+            var myChart = new Chart(ctx, {
+                type: 'line',
+                data: {
+                    labels: ["Tháng 7", "Tháng 8", "Tháng 9", "Tháng 10", "Tháng 11", "Tháng 12"],
+                    datasets: [
+                        {
+                            label: "Tổng tiền thu về",
+                            borderColor: "rgba(144,	104,	190,.9)",
+                            borderWidth: "1",
+                            backgroundColor: "rgba(255,254,254,0.25)",
+                            data: ${totalSale7To12}
+                        },
+                        {
+                            label: "Tổng tiền lãi",
+                            borderColor: "rgba(110,	211,	207, 0.9)",
+                            borderWidth: "1",
+                            backgroundColor: "rgba(255,255,255,0.5)",
+                            pointHighlightStroke: "rgba(26,179,148,1)",
+                            data: ${interest7To12}
+                        }
+                        ,
+                        {
+                            label: "Tiền nhập",
+                            borderColor: "rgba(110,	211,	207, 0.9)",
+                            borderWidth: "1",
+                            backgroundColor: "rgba(255,255,255,0.5)",
+                            pointHighlightStroke: "rgba(26,179,148,1)",
+                            data: ${importMoney7To12}
+                        }
+                    ]
+                },
+                options: {
+                    responsive: true,
+                    tooltips: {
+                        mode: 'index',
+                        intersect: false
+                    },
+                    hover: {
+                        mode: 'nearest',
+                        intersect: true
+                    }
+
+                }
+            });
+
+        })(jQuery);
+
+    </script>
 </body>
 
 </html>

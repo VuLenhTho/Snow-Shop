@@ -22,8 +22,7 @@ import org.springframework.web.client.RestTemplate;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
-import java.util.Arrays;
-import java.util.List;
+import java.util.*;
 import java.util.stream.Collectors;
 
 @Service
@@ -161,7 +160,75 @@ public class BillServiceImpl implements BillService {
         reportByMonthAndYearDTO.setVnMoneyFromSale(CommonUtils.convertToVnCurrency(reportByMonthAndYearDTO.getMoneyFromSale()));
         modelAndView.addObject("reportData", reportByMonthAndYearDTO);
 
+        Map<Integer, Long> interestPerMonth = reportByMonthAndYearDTO.getInterestPerMonth();
+        Map<Integer, Long> importPerMonth = reportByMonthAndYearDTO.getImportPerMonth();
+        Map<Integer, Long> moneyFromSalePerMonth = reportByMonthAndYearDTO.getMoneyFromSalePerMonth();
+
+        List<Long> interest1To7 = new ArrayList<>();
+        List<Long> importMoney1To7 = new ArrayList<>();
+        List<Long> totalSale1To7 = new ArrayList<>();
+        for (int i = 1; i < 8; i++) {
+            interest1To7.add(interestPerMonth.get(i));
+            importMoney1To7.add(importPerMonth.get(i));
+            totalSale1To7.add(moneyFromSalePerMonth.get(i));
+        }
+        List<Long> interest7To12 = new ArrayList<>();
+        List<Long> importMoney7To12 = new ArrayList<>();
+        List<Long> totalSale7To12 = new ArrayList<>();
+        for (int i = 7; i < 13; i++) {
+            interest7To12.add(interestPerMonth.get(i));
+            importMoney7To12.add(importPerMonth.get(i));
+            totalSale7To12.add(moneyFromSalePerMonth.get(i));
+        }
+        modelAndView.addObject("interest1To7", interest1To7);
+        modelAndView.addObject("importMoney1To7", importMoney1To7);
+        modelAndView.addObject("totalSale1To7", totalSale1To7);
+
+        modelAndView.addObject("interest7To12", interest7To12);
+        modelAndView.addObject("importMoney7To12", importMoney7To12);
+        modelAndView.addObject("totalSale7To12", totalSale7To12);
         return modelAndView;
 
+    }
+
+    @Override
+    public ModelAndView getReportByRangeDate(Long startTime, Long endTime, String dateValue) {
+        ModelAndView modelAndView = new ModelAndView("/admin/report/report-by-range-date");
+        ReportByMonthAndYearDTO reportByMonthAndYearDTO = restTemplate.exchange(APIConstant.ADMIN_URI
+                        + "/bill/reportByRangeDate?startTime=" + startTime + "&endTime=" + endTime,
+                HttpMethod.GET, new HttpEntity<ReportByMonthAndYearDTO>(securityService.getHeadersWithToken()), ReportByMonthAndYearDTO.class).getBody();
+
+        reportByMonthAndYearDTO.setVnImportMoney(CommonUtils.convertToVnCurrency(reportByMonthAndYearDTO.getImportMoney()));
+        reportByMonthAndYearDTO.setVnInterestMoney(CommonUtils.convertToVnCurrency(reportByMonthAndYearDTO.getInterestMoney()));
+        reportByMonthAndYearDTO.setVnMoneyFromSale(CommonUtils.convertToVnCurrency(reportByMonthAndYearDTO.getMoneyFromSale()));
+        modelAndView.addObject("reportData", reportByMonthAndYearDTO);
+        modelAndView.addObject("dateValue", dateValue);
+        modelAndView.addObject("totalProduct", reportByMonthAndYearDTO.getTotalProduct().size());
+
+        Long tongQuanJeans = reportByMonthAndYearDTO.getTotalProduct()
+                .stream()
+                .filter(productDTO -> productDTO.getSubCategoryDTO().getId().equals(3L)).count();
+        modelAndView.addObject("tongQuanJeans", tongQuanJeans);
+
+        Long tongAoPhong = reportByMonthAndYearDTO.getTotalProduct()
+                .stream()
+                .filter(productDTO -> productDTO.getSubCategoryDTO().getId().equals(1L)).count();
+        modelAndView.addObject("tongAoPhong", tongAoPhong);
+
+        Long tongQuanBaggy = reportByMonthAndYearDTO.getTotalProduct()
+                .stream()
+                .filter(productDTO -> productDTO.getSubCategoryDTO().getId().equals(9L)).count();
+        modelAndView.addObject("tongQuanBaggy", tongQuanBaggy);
+
+        Long tongVayLienThan = reportByMonthAndYearDTO.getTotalProduct()
+                .stream()
+                .filter(productDTO -> productDTO.getSubCategoryDTO().getId().equals(5L)).count();
+        modelAndView.addObject("tongVayLienThan", tongVayLienThan);
+
+        Long tongChanVay = reportByMonthAndYearDTO.getTotalProduct()
+                .stream()
+                .filter(productDTO -> productDTO.getSubCategoryDTO().getId().equals(2L)).count();
+        modelAndView.addObject("tongChanVay", tongChanVay);
+        return modelAndView;
     }
 }

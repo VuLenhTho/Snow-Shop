@@ -1094,9 +1094,9 @@ input[type="email"]:focus, input[type="password"]:focus, input[type="text"]:focu
   position: absolute;
   top: 12px;
   right: 12px;
-  background: #000;
+  background: #ec0a0a;
   color: #fff;
-  font-size: 12px;
+  font-size: 15px;
   padding: 4px 12px;
   font-weight: 300;
   display: inline-block;
