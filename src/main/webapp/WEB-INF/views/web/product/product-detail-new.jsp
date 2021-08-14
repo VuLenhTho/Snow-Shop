@@ -81,8 +81,8 @@
                         <p class="product-description mt-20">${product.shortDescription}</p>
                     </c:if>
                     <c:if test="${product.discountDTOS.size() > 0}">
-                        <p class="product-price">
-                            <del>${product.vnOriginalPrice}</del>&nbsp; &nbsp;${product.vnPrice}</p>
+                        <p style="color: red" class="product-price">
+                            <del style="color: gray">${product.vnOriginalPrice}</del>&nbsp; &nbsp;${product.vnPrice}</p>
                         <h4>Khuyến mại:</h4>
                         <c:forEach items="${product.discountDTOS}" var="discount">
                             <p>- ${discount.content}</p>

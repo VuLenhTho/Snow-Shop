@@ -75,6 +75,13 @@
                                     <div class="card-body">
                                         <div class="form-validation">
                                             <div class="form-group row">
+                                                <label class="col-lg-3 col-form-label" for="totalProduct">Tổng số sản phẩm bán được:</label>
+                                                <div class="col-lg-9">
+                                                    <br>
+                                                    <p id="totalProduct">${totalProduct}</p>
+                                                </div>
+                                            </div>
+                                            <div class="form-group row">
                                                 <label class="col-lg-3 col-form-label" for="moneyFromSale">Tổng tiền thu
                                                     về:</label>
                                                 <div class="col-lg-9">
@@ -121,6 +128,19 @@
                                 </div>
                             </div>
                         </div>
+                        <div class="row">
+                            <div class="col-lg-6">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <h4 class="card-title">Biểu đồ tỉ lệ sản phẩm bán được của từng loại sản phẩm</h4>                        <br>
+                                        <br>
+                                        <br>
+                                        <div id="flotPie1" class="flot-chart"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
                     </div>
                 </div>
             </div>
@@ -159,14 +179,14 @@
                     datasets: [
                         {
                             label: "Tổng tiền thu về",
-                            borderColor: "rgba(144,	104,	190,.9)",
+                            borderColor: "rgba(28,0,75,0.9)",
                             borderWidth: "1",
                             backgroundColor: "rgba(255,254,254,0.25)",
                             data: ${totalSale1To7}
                         },
                         {
                             label: "Tổng tiền lãi",
-                            borderColor: "rgba(110,	211,	207, 0.9)",
+                            borderColor: "rgba(248,0,0,0.9)",
                             borderWidth: "1",
                             backgroundColor: "rgba(255,255,255,0.5)",
                             pointHighlightStroke: "rgba(26,179,148,1)",
@@ -175,7 +195,7 @@
                         ,
                         {
                             label: "Tiền nhập",
-                            borderColor: "rgba(110,	211,	207, 0.9)",
+                            borderColor: "rgba(0,80,9,0.9)",
                             borderWidth: "1",
                             backgroundColor: "rgba(255,255,255,0.5)",
                             pointHighlightStroke: "rgba(26,179,148,1)",
@@ -256,6 +276,75 @@
         })(jQuery);
 
     </script>
+
+<%-- Bieu do hinh tron   --%>
+        <!--  flot-chart js -->
+        <script src="/template/assets/plugins/flot/js/jquery.flot.min.js"></script>
+        <script src="/template/assets/plugins/flot/js/jquery.flot.pie.js"></script>
+        <script src="/template/assets/plugins/flot/js/jquery.flot.resize.js"></script>
+        <script src="/template/assets/plugins/flot/js/jquery.flot.spline.js"></script>
+        <%--    <script src="/template/assets/plugins/flot/js/jquery.flot.init.js"></script>--%>
+        <script>
+            var piedata = [{
+                label: "Quần Jeans",
+                data: [
+                    [1, ${tongQuanJeans}]
+                ],
+                color: '#878b8e'
+            },
+                {
+                    label: "Áo phông",
+                    data: [
+                        [1, ${tongAoPhong}]
+                    ],
+                    color: '#794e2f'
+                },
+                {
+                    label: "Quần Baggy",
+                    data: [
+                        [1, ${tongQuanBaggy}]
+                    ],
+                    color: '#9068be'
+                },
+                {
+                    label: "Váy liền thân",
+                    data: [
+                        [1, ${tongVayLienThan}]
+                    ],
+                    color: '#e62739'
+                },
+                {
+                    label: "Chân váy",
+                    data: [
+                        [1, ${tongChanVay}]
+                    ],
+                    color: '#173e43'
+                }
+            ];
+
+            $.plot('#flotPie1', piedata, {
+                series: {
+                    pie: {
+                        show: true,
+                        radius: 1,
+                        label: {
+                            show: true,
+                            radius: 2 / 3,
+                            formatter: labelFormatter,
+                            threshold: 0.1
+                        }
+                    }
+                },
+                grid: {
+                    hoverable: true,
+                    clickable: true
+                }
+            });
+
+            function labelFormatter(label, series) {
+                return "<div style='font-size:8pt; text-align:center; padding:2px; color:white;'>" + label + "<br/>" + Math.round(series.percent) + "%</div>";
+            }
+        </script>
 </body>
 
 </html>

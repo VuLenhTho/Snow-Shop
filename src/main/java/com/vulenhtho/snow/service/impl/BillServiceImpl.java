@@ -187,22 +187,13 @@ public class BillServiceImpl implements BillService {
         modelAndView.addObject("interest7To12", interest7To12);
         modelAndView.addObject("importMoney7To12", importMoney7To12);
         modelAndView.addObject("totalSale7To12", totalSale7To12);
-        return modelAndView;
+
+        //=================
+        return setDataForCircle(modelAndView, reportByMonthAndYearDTO);
 
     }
 
-    @Override
-    public ModelAndView getReportByRangeDate(Long startTime, Long endTime, String dateValue) {
-        ModelAndView modelAndView = new ModelAndView("/admin/report/report-by-range-date");
-        ReportByMonthAndYearDTO reportByMonthAndYearDTO = restTemplate.exchange(APIConstant.ADMIN_URI
-                        + "/bill/reportByRangeDate?startTime=" + startTime + "&endTime=" + endTime,
-                HttpMethod.GET, new HttpEntity<ReportByMonthAndYearDTO>(securityService.getHeadersWithToken()), ReportByMonthAndYearDTO.class).getBody();
-
-        reportByMonthAndYearDTO.setVnImportMoney(CommonUtils.convertToVnCurrency(reportByMonthAndYearDTO.getImportMoney()));
-        reportByMonthAndYearDTO.setVnInterestMoney(CommonUtils.convertToVnCurrency(reportByMonthAndYearDTO.getInterestMoney()));
-        reportByMonthAndYearDTO.setVnMoneyFromSale(CommonUtils.convertToVnCurrency(reportByMonthAndYearDTO.getMoneyFromSale()));
-        modelAndView.addObject("reportData", reportByMonthAndYearDTO);
-        modelAndView.addObject("dateValue", dateValue);
+    private ModelAndView setDataForCircle(ModelAndView modelAndView, ReportByMonthAndYearDTO reportByMonthAndYearDTO) {
         modelAndView.addObject("totalProduct", reportByMonthAndYearDTO.getTotalProduct().size());
 
         Long tongQuanJeans = reportByMonthAndYearDTO.getTotalProduct()
@@ -230,5 +221,20 @@ public class BillServiceImpl implements BillService {
                 .filter(productDTO -> productDTO.getSubCategoryDTO().getId().equals(2L)).count();
         modelAndView.addObject("tongChanVay", tongChanVay);
         return modelAndView;
+    }
+
+    @Override
+    public ModelAndView getReportByRangeDate(Long startTime, Long endTime, String dateValue) {
+        ModelAndView modelAndView = new ModelAndView("/admin/report/report-by-range-date");
+        ReportByMonthAndYearDTO reportByMonthAndYearDTO = restTemplate.exchange(APIConstant.ADMIN_URI
+                        + "/bill/reportByRangeDate?startTime=" + startTime + "&endTime=" + endTime,
+                HttpMethod.GET, new HttpEntity<ReportByMonthAndYearDTO>(securityService.getHeadersWithToken()), ReportByMonthAndYearDTO.class).getBody();
+
+        reportByMonthAndYearDTO.setVnImportMoney(CommonUtils.convertToVnCurrency(reportByMonthAndYearDTO.getImportMoney()));
+        reportByMonthAndYearDTO.setVnInterestMoney(CommonUtils.convertToVnCurrency(reportByMonthAndYearDTO.getInterestMoney()));
+        reportByMonthAndYearDTO.setVnMoneyFromSale(CommonUtils.convertToVnCurrency(reportByMonthAndYearDTO.getMoneyFromSale()));
+        modelAndView.addObject("reportData", reportByMonthAndYearDTO);
+        modelAndView.addObject("dateValue", dateValue);
+        return setDataForCircle(modelAndView, reportByMonthAndYearDTO);
     }
 }
